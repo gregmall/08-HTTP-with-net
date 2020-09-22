@@ -26,7 +26,25 @@ describe('createResponse', () => {
 
 
   });
+  it('returns html with an h1 and the word red when we go to the /red route', async() => {
+    const response = await request(app)
+      .get('/green');
+    console.log(response.text);
+    expect(response.text).toEqual('<html><body><h1>green</h1></body></html>');
 
-  
+
+  });
+
+  it('returns html with an h1 and the word red when we go to the /red route', async() => {
+    const response = await request(app)
+      .get('/blue');
+    console.log(response.text);
+    expect(response.text).toEqual('<html><body><h1>blue</h1></body></html>');
+
+
+  });
+
+
+
 
 });
