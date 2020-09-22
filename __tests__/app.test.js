@@ -12,9 +12,21 @@ describe('createResponse', () => {
   });
   it('returns a status code 200 and plain text with the request body when we go to the /echo route', async() => {
     const response = await request(app)
-      .post('/echo');
-
-    expect(response.body).toEqual('200 ok');
+      .post('/echo')
+      .send('status code 200');
+    
+    expect(response.text).toEqual('status code 200');
   });
+
+  it('returns html with an h1 and the word red when we go to the /red route', async() => {
+    const response = await request(app)
+      .get('/red');
+    console.log(response.text);
+    expect(response.text).toEqual('<html><body><h1>red</h1></body></html>');
+
+
+  });
+
+  
 
 });
